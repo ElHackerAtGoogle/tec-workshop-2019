@@ -1,0 +1,36 @@
+{
+  "name": "tec-workshop-2019",
+  "version": "1.0.0",
+  "description": "Workshop for Tec de Monterrey Students on how to host a web application in Google Cloud Platform",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElHackerAtGoogle/tec-workshop-2019.git"
+  },
+  "keywords": [
+    "workshop",
+    "gcp",
+    "google",
+    "cloud",
+    "platform",
+    "itesm"
+  ],
+  "author": "elhacker@google.com, dandov@google.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ElHackerAtGoogle/tec-workshop-2019/issues"
+  },
+  "homepage": "https://github.com/ElHackerAtGoogle/tec-workshop-2019#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
