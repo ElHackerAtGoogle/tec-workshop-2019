@@ -1,9 +1,13 @@
 import express from 'express';
+import path from 'path';
 
 const app = express();
 const port = 3000;
 app.get('/', (req, res) => {
-  res.send('Welcome to Tec Workshop 2019');
+  res.sendFile(path.join(__dirname + '/../views/index.html'));
+});
+app.get('/dist/game.js', (req, res) => {
+  res.sendFile(path.join(__dirname + '/game.js'))
 });
 app.listen(port, err => {
   if (err) {
