@@ -7,6 +7,7 @@ const port = 3000;
 const pictureWidth = 1000;
 const pictureHeight = 1000;
 const pictureSize = pictureWidth * pictureHeight;
+// TODO(elhacker): Optimize the storage to use 4 bits for each pixel.
 const storedPicture = Array.from<number>({length: pictureSize}).fill(0);
 
 app.use(express.json()) // for parsing application/json
@@ -31,9 +32,14 @@ app.post('/setPixel', (req, res) => {
   res.sendStatus(200); // OK
 });
 
+app.get('/getPicture', (req, res) => {
+  res.json({'picture': storedPicture});
+});
+
 app.get('/dist/game.js', (req, res) => {
   res.sendFile(path.join(__dirname + '/game.js'))
 });
+
 app.listen(port, err => {
   if (err) {
     return console.error(err);

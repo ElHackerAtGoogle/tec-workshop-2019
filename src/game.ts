@@ -16,6 +16,8 @@ const colorPalette = [
     '#CF6EE4',
     '#820080'
 ];
+const pictureHeight = 1000;
+const pictureWidth = 1000;
 
 let pickedPixel;
 let pickedColor;
@@ -76,8 +78,20 @@ function drawPixel(x: number, y: number, hexColor: string) {
   pixel.data[1] = color[1]; // green
   pixel.data[2] = color[2]; // blue
   pixel.data[3] = 255; // alpha
-  console.log(pixel.data);
   ctx.putImageData(pixel, x, y);
+}
+
+function drawPicture(picture: Array<number>) {
+  let x = 0;
+  let y = 0;
+  for (let i = 0; i < picture.length; i++) {
+    drawPixel(x, y, colorPalette[picture[i]]);
+    x++;
+    if (x >= pictureWidth) {
+      x = 0;
+      y++;
+    }
+  }
 }
 
 function setPixel(x: number, y: number, colorId: string) {
@@ -86,12 +100,26 @@ function setPixel(x: number, y: number, colorId: string) {
   xhr.setRequestHeader('Content-Type', 'application/json');
 
   xhr.onreadystatechange = () => {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Request finished successfuly.
       console.log('Pixel is now stored');
     }
   }
   xhr.send(JSON.stringify({x, y, colorId}));
+}
+
+function getPicture() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '/getPicture', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      const response = JSON.parse(xhr.responseText);
+      drawPicture(response.picture);
+    }
+  }
+  xhr.send();
 }
 
 window.onload = () => {
@@ -104,4 +132,6 @@ window.onload = () => {
     const cell = paletteCells[i] as HTMLElement;
     cell.addEventListener('click', pickColor);
   }
+
+  getPicture();
 }
