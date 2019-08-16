@@ -20,6 +20,18 @@ const colorPalette = [
 let pickedPixel;
 let pickedColor;
 
+// Converts a hex string into a rgb array.
+// Assumes following hex format: #RRGGBB
+function hexToRgb(hex: string): Array<number> {
+  let rHex = hex.slice(1, 3);
+  let gHex = hex.slice(3, 5);
+  let bHex = hex.slice(5, 7);
+  let r = parseInt(rHex, 16);
+  let g = parseInt(gHex, 16);
+  let b = parseInt(bHex, 16);
+  return [r, g, b];
+}
+
 // Sets the predefined colors within the color pallete.
 function loadColors() {
   const paletteCells = document.getElementsByClassName('color-cell');
@@ -30,8 +42,10 @@ function loadColors() {
   for (let i = 0; i < colorPalette.length; i++) {
     const cell = paletteCells[i] as HTMLElement;
     cell.style.backgroundColor = colorPalette[i];
+    cell.dataset.colorId = '' + i;
   }
 }
+
 
 function pickPixel(event) {
   const palette = <HTMLElement>document.getElementById('palette');
@@ -42,22 +56,27 @@ function pickPixel(event) {
   console.log('picked Pixel: ' + pickedPixel.x + ', ' + pickedPixel.y);
 }
 
+
 function pickColor(event) {
   const palette = <HTMLElement>document.getElementById('palette');
   palette.classList.add('hidden');
   pickedColor = event.target.style.backgroundColor;
-  console.log('picked color: ' + pickedColor);
-  /**
+  let pickedColorId = event.target.dataset.colorId;
+  drawPixel(pickedPixel.x, pickedPixel.y, colorPalette[pickedColorId]);
+}
+
+// Draws a pixel on canvas with the specified coordinates and hexadecimal color.
+function drawPixel(x: number, y: number, hexColor: string) {
   const canvas = <HTMLCanvasElement>document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
   const pixel = ctx.getImageData(x, y, 1, 1);
-  pixel.data[0] = 255; // red
-  pixel.data[1] = 0; // green
-  pixel.data[2] = 0; // blue
+  const color = hexToRgb(hexColor);
+  pixel.data[0] = color[0]; // red
+  pixel.data[1] = color[1]; // green
+  pixel.data[2] = color[2]; // blue
   pixel.data[3] = 255; // alpha
   console.log(pixel.data);
   ctx.putImageData(pixel, x, y);
-  */
 }
 
 window.onload = () => {
