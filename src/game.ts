@@ -63,6 +63,7 @@ function pickColor(event) {
   pickedColor = event.target.style.backgroundColor;
   let pickedColorId = event.target.dataset.colorId;
   drawPixel(pickedPixel.x, pickedPixel.y, colorPalette[pickedColorId]);
+  setPixel(pickedPixel.x, pickedPixel.y, pickedColorId);
 }
 
 // Draws a pixel on canvas with the specified coordinates and hexadecimal color.
@@ -77,6 +78,20 @@ function drawPixel(x: number, y: number, hexColor: string) {
   pixel.data[3] = 255; // alpha
   console.log(pixel.data);
   ctx.putImageData(pixel, x, y);
+}
+
+function setPixel(x: number, y: number, colorId: string) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/setPixel', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  xhr.onreadystatechange = () => {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      // Request finished successfuly.
+      console.log('Pixel is now stored');
+    }
+  }
+  xhr.send(JSON.stringify({x, y, colorId}));
 }
 
 window.onload = () => {
