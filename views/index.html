@@ -1,10 +1,71 @@
 <html>
   <head>
     <title>GCP Place</title>
+    <style>
+      #canvas {
+        border: 1px solid black;
+        float: left;
+      }
+
+      #palette {
+        width: 200px;
+        height: 200px;
+        float: left;
+      }
+
+      table {
+        border: 1px solid;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid;
+        position: relative;
+      }
+
+      td:after {
+        content: '';
+        display: block;
+        margin-top: 100%;
+      }
+
+      .hidden {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
     <h1>Select a pixel and a color to draw it in the picture</h1>
-    <canvas id="canvas" width="1000" height="1000" style="border: 1px solid black"></canvas>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+    <div id="palette" class="hidden">
+      <table>
+        <tr>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+        </tr>
+        <tr>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+        </tr>
+        <tr>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+        </tr>
+        <tr>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+          <td class="color-cell"></td>
+        </tr>
+      </table>
+    </div>
     <script src="/dist/game.js"></script>
   </body>
 </html>
