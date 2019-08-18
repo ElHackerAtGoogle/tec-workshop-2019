@@ -22,6 +22,22 @@ const pictureWidth = 1000;
 let pickedPixel;
 let pickedColor;
 
+// TODO(elhacker): Get the URL from the environment the server is being run in.
+const ws = new WebSocket('ws://localhost:3000');
+
+// Listen for messages
+ws.addEventListener('message', function (event) {
+  console.log('Message from server ', event.data);
+  const data = JSON.parse(event.data);
+  switch (data.method) {
+    case 'drawPixel':
+      drawPixel(data.x, data.y, colorPalette[data.colorId]);
+      break;
+    default:
+      console.log('Method not supported by client');
+  }
+});
+
 // Converts a hex string into a rgb array.
 // Assumes following hex format: #RRGGBB
 function hexToRgb(hex: string): Array<number> {
@@ -98,17 +114,8 @@ function drawPicture(picture: Array<number>) {
 }
 
 function setPixel(x: number, y: number, colorId: string) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', '/setPixel', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      // Request finished successfuly.
-      console.log('Pixel is now stored');
-    }
-  }
-  xhr.send(JSON.stringify({x, y, colorId}));
+  const method = 'setPixel';
+  ws.send(JSON.stringify({method, x, y, colorId}));
 }
 
 function getPicture() {
