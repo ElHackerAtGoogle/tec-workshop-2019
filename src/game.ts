@@ -82,16 +82,19 @@ function drawPixel(x: number, y: number, hexColor: string) {
 }
 
 function drawPicture(picture: Array<number>) {
-  let x = 0;
-  let y = 0;
-  for (let i = 0; i < picture.length; i++) {
-    drawPixel(x, y, colorPalette[picture[i]]);
-    x++;
-    if (x >= pictureWidth) {
-      x = 0;
-      y++;
-    }
+  const canvas = <HTMLCanvasElement>document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const imageData = ctx.createImageData(pictureWidth, pictureHeight);
+  // Iterate through every pixel
+  for (let i = 0, j = 0; i < imageData.data.length; i += 4, j++) {
+    // Modify pixel data.
+    const color = hexToRgb(colorPalette[picture[j]]);
+    imageData.data[i + 0] = color[0]; // red
+    imageData.data[i + 1] = color[1]; // green
+    imageData.data[i + 2] = color[2]; // blue
+    imageData.data[i + 3] = 255; // alpha
   }
+  ctx.putImageData(imageData, 0, 0);
 }
 
 function setPixel(x: number, y: number, colorId: string) {
