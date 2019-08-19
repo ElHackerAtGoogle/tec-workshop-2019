@@ -26,6 +26,7 @@ let pickedColor;
 const ws = new WebSocket('ws://localhost:3000');
 
 // Listen for messages
+// Assumes every message passed is in JSON format.
 ws.addEventListener('message', function (event) {
   console.log('Message from server ', event.data);
   const data = JSON.parse(event.data);
