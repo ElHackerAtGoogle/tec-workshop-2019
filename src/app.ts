@@ -5,7 +5,7 @@ import path from 'path';
 // Install WebSocket support in the express app.
 const wsInstance = expressWs(express());
 const app = wsInstance.app;
-const port = 3000;
+const port = Number(process.env.PORT) || 3000;
 
 const pictureWidth = 1000;
 const pictureHeight = 1000;

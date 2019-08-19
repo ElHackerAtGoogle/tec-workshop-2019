@@ -4,8 +4,9 @@
   "description": "Workshop for Tec de Monterrey Students on how to host a web application in Google Cloud Platform",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gcp-build": "tsc"
   },
   "repository": {
     "type": "git",

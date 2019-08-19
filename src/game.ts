@@ -22,8 +22,10 @@ const pictureWidth = 1000;
 let pickedPixel;
 let pickedColor;
 
-// TODO(elhacker): Get the URL from the environment the server is being run in.
-const ws = new WebSocket('ws://localhost:3000');
+// Uncomment this for local dev
+//const ws = new WebSocket('ws://localhost:3000');
+// Uncomment this line for prod env
+const ws = new WebSocket('wss://gcp-place.appspot.com');
 
 // Listen for messages
 // Assumes every message passed is in JSON format.
