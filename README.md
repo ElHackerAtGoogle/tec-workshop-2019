@@ -83,7 +83,7 @@ Your app will be running in `localhost:3000`
 
 ### Get your Student $50 USD credit for GCP
 
-Pick a code from [this spreadsheet](https://docs.google.com/spreadsheets/d/11CXC7qhMnhN3lQd1wTIDKDPzWUUNviZlL_A3Fc1eK10/edit?ts=5d532ef2#gid=0), once you claim a code please mark it as used by formatting it with ~~strikethrough~~. Then claim it here with your personal google account [bit.ly/gcp-redeem](bit.ly/gcp-redeem)
+Pick a code from [this spreadsheet](https://docs.google.com/spreadsheets/d/12gOna-CvN92v_CB7dA8Coz1ECQk8SKIwWW0giruMtFE/edit?usp=sharing), once you claim a code please mark it as used by formatting it with ~~strikethrough~~. Then claim it here with your personal google account [bit.ly/gcp-redeem](bit.ly/gcp-redeem)
 
 [Follow the "Before you begin" section on GCP Docs](https://cloud.google.com/nodejs/getting-started/hello-world#before-you-begin)
 
