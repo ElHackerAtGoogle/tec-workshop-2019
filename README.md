@@ -12,7 +12,7 @@
 
 ### Get your Student $50 USD credit for GCP
 
-Pick a code from [this spreadsheet](https://docs.google.com/spreadsheets/d/12gOna-CvN92v_CB7dA8Coz1ECQk8SKIwWW0giruMtFE/edit?usp=sharing), once you claim a code please mark it as used by formatting it with ~~strikethrough~~. Then claim it here with your personal google account [Redeem Link](https://console.cloud.google.com/education)
+Pick a code from [this spreadsheet](https://docs.google.com/spreadsheets/d/12gOna-CvN92v_CB7dA8Coz1ECQk8SKIwWW0giruMtFE/edit#gid=1603932540), once you claim a code please mark it as used by formatting it with ~~strikethrough~~. Then claim it here with your personal google account [Redeem Link](https://console.cloud.google.com/education)
 
 ### Setup a new project
 
