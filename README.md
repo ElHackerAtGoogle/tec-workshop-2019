@@ -8,7 +8,7 @@
 - [Have Node.js installed in your machine](https://nodejs.org/en/download/)
 - [Be familiar with Typescript/Javascript](https://www.typescriptlang.org/docs/home.html)
 
-## Step 0: Download GCP SDK and Setup your Project
+## Step 0: Get started with GCP and Setup your Project
 
 ### Get your Student $50 USD credit for GCP
 
@@ -34,7 +34,7 @@ git clone https://github.com/ElHackerAtGoogle/tec-workshop-2019.git
 
 ```
 cd tec-workshop-2019/
-gcp app deploy
+gcloud app deploy
 ```
 
 **Note:** This will take several minutes to finish.
@@ -42,7 +42,7 @@ gcp app deploy
 2. Open your application already hosted in GCP at `https://YOUR_PROJECT_ID.appspot.com`
 
 ```
-gcp app browse
+gcloud app browse
 ```
 
 # GCP Place Project
