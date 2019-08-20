@@ -2,9 +2,50 @@
 
 ## Prerequisites:
 
+**Note**: If you follow the step 0 on this guide you'll have all the prerequisites complete.
+
 - [You have Git installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Have Node.js installed in your machine](https://nodejs.org/en/download/)
 - [Be familiar with Typescript/Javascript](https://www.typescriptlang.org/docs/home.html)
+
+## Step 0: Download GCP SDK and Setup your Project
+
+### Get your Student $50 USD credit for GCP
+
+Pick a code from [this spreadsheet](https://docs.google.com/spreadsheets/d/12gOna-CvN92v_CB7dA8Coz1ECQk8SKIwWW0giruMtFE/edit?usp=sharing), once you claim a code please mark it as used by formatting it with ~~strikethrough~~. Then claim it here with your personal google account [Redeem Link](https://console.cloud.google.com/education)
+
+### Setup a new project
+
+1. Visit the [GCP Dashboard](https://console.cloud.google.com/home/dashboard)
+2. Create a new Project
+3. Open the GCP Console
+
+## Step 1: Clone the project repo
+
+```
+git clone https://github.com/ElHackerAtGoogle/tec-workshop-2019.git
+```
+
+## Step 2: Deploy your app to GCP
+
+1. Run the following command from your project's base directory to deploy the app to GCP
+
+**Note:** You might have to update `src/game.ts` file to use the prod env WebSocket url to your project id.
+
+```
+cd tec-workshop-2019/
+gcp app deploy
+```
+
+**Note:** This will take several minutes to finish.
+
+2. Open your application already hosted in GCP at `https://YOUR_PROJECT_ID.appspot.com`
+
+```
+gcp app browse
+```
+
+# GCP Place Project
 
 ## Project Overview
 
@@ -46,62 +87,6 @@ This project replicates the social game createdd by Reddit called [r/Place](http
 - WebSockets
 - HTML Canvas
 - GCP for hosting
-
-## Step 1: Clone the project repo
-
-```
-git clone https://github.com/ElHackerAtGoogle/tec-workshop-2019.git
-```
-
-## Step 2: Run the repo locally
-
-### Install all the dependencies for the project
-
-```
-npm install
-```
-
-### Compile Typescript code
-
-```
-tsc
-```
-
-All the `.ts` files get compiled into `.js` files and written on `dist/` directory.
-
-### Start the Express server
-
-```
-npm start
-```
-
-Your app will be running in `localhost:3000`
-
-**Note**: You might have to update `src/game.ts` file to use the local dev WebSocket connection.
-
-## Step 3: Download GCP SDK and Setup your Project
-
-### Get your Student $50 USD credit for GCP
-
-Pick a code from [this spreadsheet](https://docs.google.com/spreadsheets/d/12gOna-CvN92v_CB7dA8Coz1ECQk8SKIwWW0giruMtFE/edit?usp=sharing), once you claim a code please mark it as used by formatting it with ~~strikethrough~~. Then claim it here with your personal google account [bit.ly/gcp-redeem](https://console.cloud.google.com/education)
-
-[Follow the "Before you begin" section on GCP Docs](https://cloud.google.com/nodejs/getting-started/hello-world#before-you-begin)
-
-## Step 4: Deploy your app to GCP
-
-1. Run the following command from your project's base directory to deploy the app to GCP
-
-**Note:** You might have to update `src/game.ts` file to use the prod env WebSocket connection.
-
-```
-gcp app deploy
-```
-
-2. Open your application already hosted in GCP at `https://YOUR_PROJECT_ID.appspot.com`
-
-```
-gcp app browse
-```
 
 
 ## Challenges for you after the workshop
